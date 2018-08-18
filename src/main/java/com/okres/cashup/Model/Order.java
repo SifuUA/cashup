@@ -1,6 +1,7 @@
 package com.okres.cashup.Model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "orders")
@@ -22,6 +23,9 @@ public class Order {
 
     @Column(name = "currency")
     private String currency;
+
+    @ManyToMany(mappedBy = "orders")
+    private Set<Client> clients;
 
     public long getId() {
         return id;
@@ -61,5 +65,13 @@ public class Order {
 
     public void setCurrency(String currency) {
         this.currency = currency;
+    }
+
+    public Set<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(Set<Client> clients) {
+        this.clients = clients;
     }
 }

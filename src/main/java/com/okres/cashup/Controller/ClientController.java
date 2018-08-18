@@ -39,6 +39,17 @@ public class ClientController {
         return clientRepository.findById(clientId);
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
+    public List<Client> editClient(@PathVariable("id") long clientId,
+                                   @RequestBody Client newClient) {
+        clientRepository.deleteById(clientId);
+        clientRepository.save(newClient);
+//        Client client = clientRepository.findByInn(newClient.getInn());
+//        client.setId(clientId);
+//        System.out.println(clientRepository.findByInn(newClient.getInn()));
+        return clientRepository.findAll();
+    }
+
     @ResponseStatus(value = HttpStatus.BAD_REQUEST,
             reason = "Request ID not found.")
     @ExceptionHandler(IllegalArgumentException.class)

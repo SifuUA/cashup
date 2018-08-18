@@ -6,6 +6,7 @@ import java.util.Set;
 @Entity
 @Table(name = "clients")
 public class Client {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "client_id")
@@ -25,6 +26,10 @@ public class Client {
 
     @Column(name = "inn")
     private long inn;
+
+
+    public Client() {
+    }
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -84,5 +89,10 @@ public class Client {
 
     public void setOrders(Set<Order> orders) {
         this.orders = orders;
+    }
+
+
+    public Set<Order> getOrders() {
+        return orders;
     }
 }

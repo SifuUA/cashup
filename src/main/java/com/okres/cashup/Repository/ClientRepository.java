@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository("clientRepository")
 public interface ClientRepository extends JpaRepository<Client, Long> {
     public Client findById (long id);
+    public Client findByInn(long inn);
+
 }
