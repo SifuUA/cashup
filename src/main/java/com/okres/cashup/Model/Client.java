@@ -1,10 +1,10 @@
 package com.okres.cashup.Model;
 
 import javax.persistence.*;
-import javax.sound.midi.Sequence;
 import java.util.Set;
 
-@Entity(name = "client")
+@Entity
+@Table(name = "clients")
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
