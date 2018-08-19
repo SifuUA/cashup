@@ -1,6 +1,7 @@
 package com.okres.cashup.Model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -11,6 +12,9 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "order_id")
     private long id;
+
+    @Column(name = "client_id")
+    private long clientId;
 
     @Column(name = "order_date")
     private String dateOfOrder;
@@ -24,8 +28,11 @@ public class Order {
     @Column(name = "currency")
     private String currency;
 
-    @ManyToMany(mappedBy = "orders")
-    private Set<Client> clients;
+    @ManyToOne
+    private Client client;
+
+    public Order() {
+    }
 
     public long getId() {
         return id;
@@ -67,11 +74,19 @@ public class Order {
         this.currency = currency;
     }
 
-    public Set<Client> getClients() {
-        return clients;
+    public long getClientId() {
+        return clientId;
     }
 
-    public void setClients(Set<Client> clients) {
-        this.clients = clients;
+    public void setClientId(long clientId) {
+        this.clientId = clientId;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 }

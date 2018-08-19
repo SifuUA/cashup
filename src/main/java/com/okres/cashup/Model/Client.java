@@ -1,6 +1,7 @@
 package com.okres.cashup.Model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -31,12 +32,9 @@ public class Client {
     public Client() {
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "client_order",
-            joinColumns = @JoinColumn(name = "client_id"),
-            inverseJoinColumns = @JoinColumn(name = "order_id"))
-    private Set<Order> orders;
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "client_id")
+    private Set<Order> orderSet = new HashSet<>();
 
 
     public long getId() {
@@ -87,12 +85,11 @@ public class Client {
         this.inn = inn;
     }
 
-    public void setOrders(Set<Order> orders) {
-        this.orders = orders;
+    public Set<Order> getOrderSet() {
+        return orderSet;
     }
 
-
-    public Set<Order> getOrders() {
-        return orders;
+    public void setOrderSet(Set<Order> orderSet) {
+        this.orderSet = orderSet;
     }
 }

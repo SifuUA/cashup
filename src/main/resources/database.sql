@@ -12,20 +12,22 @@ create table clients (
 --- Table orders
 create table orders (
   order_id   bigint           not null,
+  client_id   bigint           not null,
   order_date varchar(255)     not null,
   status     boolean          not null,
   order_sum  double precision not null,
   currency   varchar(255)     not null,
-  primary key (order_id)
+  primary key (order_id),
+  foreign key (client_id) references clients (client_id)
 );
 --- Table for mapping
-create table client_order (
+/*create table client_order (
   client_id bigint not null,
   order_id  bigint not null,
 
   foreign key (client_id) references clients (client_id),
   foreign key (order_id) references orders (order_id)
-);
+);*/
 
 ---Insert data into clients table
 insert into clients (client_id, last_name, first_name, birth_date, gender, inn)
@@ -38,14 +40,14 @@ insert into clients (client_id, last_name, first_name, birth_date, gender, inn)
 values (103, 'Semenova', 'Yulia', '13.04.1989', 'female', 929129391);
 
 ---Insert data into orders
-insert into orders (order_id, order_date, status, order_sum, currency)
-values (201, '12.12.2001', true, 123.2, 'dollar');
+insert into orders (order_id, client_id, order_date, status, order_sum, currency)
+values (201,1, '12.12.2001', true, 123.2, 'dollar');
 
-insert into orders (order_id, order_date, status, order_sum, currency)
-values (134, '07.10.2018', true, 233.9, 'euro');
+insert into orders (order_id, client_id, order_date, status, order_sum, currency)
+values (134, 2, '07.10.2018', true, 233.9, 'euro');
 
-insert into orders (order_id, order_date, status, order_sum, currency)
-values (456, '25.01.1945', true, 9999.45, 'grivna');
+insert into orders (order_id, client_id, order_date, status, order_sum, currency)
+values (456, 3, '25.01.1945', true, 9999.45, 'grivna');
 
 ---Insert data into clients_orders
 
