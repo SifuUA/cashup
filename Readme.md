@@ -1,4 +1,4 @@
-## Spring Boot File Upload / Download Rest API Example
+## Spring Boot Rest APIs
 
 ## Steps to Setup
 
@@ -22,10 +22,10 @@ The application can be accessed at `http://localhost:8080`.
 **4. You mast have installed Postgresql DB, than you can run file** `database.sql`
 **for creating database, tables and some data**
 
-##Explore Rest APIs
+## Explore Rest APIs
 The app defines following CRUD APIs.
 
-#####POST request 
+##### POST request 
 localhost:8080/clients/create
 ```
 {
