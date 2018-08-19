@@ -4,6 +4,10 @@ import com.okres.cashup.Model.Client;
 
 import java.util.List;
 
+/**
+ * Interface with client methods required of task
+ */
+
 public interface ClientService {
 
     List<Client> saveClient(Client client);

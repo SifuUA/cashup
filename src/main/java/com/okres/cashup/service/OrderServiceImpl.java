@@ -1,16 +1,17 @@
 package com.okres.cashup.service;
 
-import com.okres.cashup.Model.Client;
 import com.okres.cashup.Model.Order;
 import com.okres.cashup.Repository.ClientRepository;
 import com.okres.cashup.Repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
+/**
+ * Implementation methods from order interface, layer between
+ * business logic and view.
+ */
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -44,14 +45,17 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void saveOrder(Order order, long clientId) {
-        order.setClientId(clientId);
-        order.setClient(clientRepository.findById(clientId));
+    public void saveOrder(Order order) {
+        order.setClient(clientRepository.findById(order.getClientId()));
         orderRepository.save(order);
     }
 
     @Override
-    public Order confirmClientOrder(Boolean confirm) {
-        return null;
+    public Order confirmClientOrder(long orderId) {
+        Order clone = new Order(orderRepository.findById(orderId));
+        orderRepository.deleteById(orderId);
+        clone.setStatus(true);
+        orderRepository.save(clone);
+        return clone;
     }
 }

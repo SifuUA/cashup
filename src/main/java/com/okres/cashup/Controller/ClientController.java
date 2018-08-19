@@ -32,7 +32,7 @@ public class ClientController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Client getClientById(@PathVariable("id") long clientId) {
-     return clientService.findClientById(clientId);
+        return clientService.findClientById(clientId);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.POST)

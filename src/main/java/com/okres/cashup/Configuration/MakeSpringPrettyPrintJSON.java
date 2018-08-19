@@ -7,6 +7,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 
 import java.util.List;
 
+/**
+ * Make the application return pretty-printed JSON (easier to debug)
+ */
 @Configuration
 public class MakeSpringPrettyPrintJSON extends WebMvcConfigurationSupport {
     @Override

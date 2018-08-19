@@ -6,7 +6,14 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * Provides sophisticated CRUD functionality for the entity class that is being managed.
+ */
+
 @Repository("orderRepository")
 public interface OrderRepository extends JpaRepository<Order, Long> {
+
     List<Order> findByClientId(long id);
+
+    Order findById(long id);
 }

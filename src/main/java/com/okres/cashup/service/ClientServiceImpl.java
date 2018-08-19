@@ -4,12 +4,14 @@ import com.okres.cashup.Model.Client;
 import com.okres.cashup.Repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.List;
+
+/**
+ * Implementation methods from client interface, layer between
+ * business logic and view.
+ */
 
 @Service
 public class ClientServiceImpl implements ClientService {

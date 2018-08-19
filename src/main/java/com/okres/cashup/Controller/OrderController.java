@@ -24,16 +24,20 @@ public class OrderController {
         return orderService.findAllOrders();
     }
 
-    @RequestMapping(value = "/create/{clientId}", method = RequestMethod.POST)
-    public List<Order> create(@PathVariable("clientId") long id,
-                              @RequestBody Order order) {
-        orderService.saveOrder(order, id);
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public List<Order> create(@RequestBody Order order) {
+        orderService.saveOrder(order);
         return orderService.findAllOrders();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public List<Order> getAllClientOrdersByClientId(@PathVariable("id") long clientId) {
         return orderService.findOrderByClientId(clientId);
+    }
+
+    @RequestMapping(value = "/confirm/{id}", method = RequestMethod.POST)
+    public Order confirmOrder(@PathVariable("id") long id) {
+        return orderService.confirmClientOrder(id);
     }
 
     @ResponseStatus(value = HttpStatus.BAD_REQUEST,

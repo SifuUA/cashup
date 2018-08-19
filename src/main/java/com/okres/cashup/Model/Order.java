@@ -1,10 +1,12 @@
 package com.okres.cashup.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Date;
+
+/**
+ * Representing Order entity for writing to DB
+ * */
 
 @Entity
 @Table(name = "orders")
@@ -18,8 +20,9 @@ public class Order {
     @Column(name = "client_id")
     private long clientId;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "order_date")
-    private String dateOfOrder;
+    private Date dateOfOrder;
 
     @Column(name = "status")
     private boolean status;
@@ -37,6 +40,21 @@ public class Order {
     public Order() {
     }
 
+    public Order(long clientId, Date dateOfOrder, boolean status, double sumOfOrder, String currency, Client client) {
+        this.clientId = clientId;
+        this.dateOfOrder = dateOfOrder;
+        this.status = status;
+        this.sumOfOrder = sumOfOrder;
+        this.currency = currency;
+        this.client = client;
+    }
+
+    //Constructor for cloning object
+    public Order(Order other) {
+        this(other.getClientId(), other.dateOfOrder, other.status,
+                other.getSumOfOrder(), other.getCurrency(), other.getClient());
+    }
+
     public long getId() {
         return id;
     }
@@ -45,11 +63,11 @@ public class Order {
         this.id = id;
     }
 
-    public String getDateOfOrder() {
+    public Date getDateOfOrder() {
         return dateOfOrder;
     }
 
-    public void setDateOfOrder(String dateOfOrder) {
+    public void setDateOfOrder(Date dateOfOrder) {
         this.dateOfOrder = dateOfOrder;
     }
 
