@@ -47,8 +47,8 @@ The app defines following CRUD APIs.
  `localhost:8080/clients/1`
  
  ##### Edit information about client by id, POST method 
-      `localhost:8080/clients/84`
-      ```
+ `localhost:8080/clients/84`
+   ```
       {
          "lastName" : "Petrov",
       
@@ -56,26 +56,26 @@ The app defines following CRUD APIs.
          
          "birthDate" : "2002-02-07",
          
-      	 "gender" : "male",
+         "gender" : "male",
       	
-      	 "inn" : "123456789111"
+         "inn" : "123456789111"
        }
        ```
   ##### Crete order, POST method 
   `localhost:8080/orders/create`
   ```
   {
-  	"clientId" : "1",
+      "clientId" : "1",
   	
-     "dateOfOrder" : "2001-01-01",
+      "dateOfOrder" : "2001-01-01",
      
-     "sumOfOrder" : "1555.3",
+      "sumOfOrder" : "1555.3",
      
-  	"currency" : "dollar"
+      "currency" : "dollar"
    }
    ```
   ##### Get all orders, GET method 
-  `localhost:8080/orders/all`
+   `localhost:8080/orders/all`
     
   ##### Get all orders of client, GET method 
   `localhost:8080/orders/1`
