@@ -10,7 +10,7 @@ public interface OrderService {
 
     Order findOrderByClientId(long id);
 
-    List<Order> saveOrder(Order client, long clientId);
+    void saveOrder(Order client, long clientId);
 
     Order confirmClientOrder(Boolean confirm);
 

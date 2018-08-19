@@ -39,10 +39,10 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> saveOrder(Order order, long clientId) {
+    public void saveOrder(Order order, long clientId) {
         order.setClientId(clientId);
+        order.setClient(clientRepository.findById(clientId));
         orderRepository.save(order);
-        return orderRepository.findAll();
     }
 
     @Override

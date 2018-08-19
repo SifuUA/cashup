@@ -1,5 +1,7 @@
 package com.okres.cashup.Model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -34,6 +36,7 @@ public class Client {
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id")
+    @JsonManagedReference
     private Set<Order> orderSet = new HashSet<>();
 
 

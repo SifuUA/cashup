@@ -1,5 +1,7 @@
 package com.okres.cashup.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -29,6 +31,7 @@ public class Order {
     private String currency;
 
     @ManyToOne
+    @JsonBackReference
     private Client client;
 
     public Order() {

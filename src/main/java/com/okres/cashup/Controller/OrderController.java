@@ -24,7 +24,7 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/create/{clientId}", method = RequestMethod.POST)
-    public List<Order> create(@PathVariable ("clientId") long id,
+    public List<Order> create(@PathVariable("clientId") long id,
                               @RequestBody Order order) {
         orderService.saveOrder(order, id);
         return orderService.findAllOrders();
