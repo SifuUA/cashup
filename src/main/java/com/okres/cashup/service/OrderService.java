@@ -8,7 +8,7 @@ public interface OrderService {
 
     List<Order> findAllOrders();
 
-    Order findOrderByClientId(long id);
+    List<Order> findOrderByClientId(long id);
 
     void saveOrder(Order client, long clientId);
 

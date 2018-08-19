@@ -3,6 +3,7 @@ package com.okres.cashup.Controller;
 import com.okres.cashup.Model.Order;
 import com.okres.cashup.service.OrderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,5 +29,16 @@ public class OrderController {
                               @RequestBody Order order) {
         orderService.saveOrder(order, id);
         return orderService.findAllOrders();
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public List<Order> getAllClientOrdersByClientId(@PathVariable("id") long clientId) {
+        return orderService.findOrderByClientId(clientId);
+    }
+
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST,
+            reason = "Request ID not found.")
+    @ExceptionHandler(IllegalArgumentException.class)
+    public void badExceptionHandler() {
     }
 }

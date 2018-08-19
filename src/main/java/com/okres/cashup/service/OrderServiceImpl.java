@@ -34,8 +34,13 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order findOrderByClientId(long id) {
-        return null;
+    public List<Order> findOrderByClientId(long id) {
+        List<Order> orders = orderRepository.findAll();
+        for (Order o : orders) {
+            if (o.getClientId() == id)
+                return orderRepository.findByClientId(id);
+        }
+        throw new IllegalArgumentException();
     }
 
     @Override
