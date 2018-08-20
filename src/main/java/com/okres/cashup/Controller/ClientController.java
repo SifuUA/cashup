@@ -1,7 +1,7 @@
 package com.okres.cashup.Controller;
 
 import com.okres.cashup.Model.Client;
-import com.okres.cashup.service.ClientServiceImpl;
+import com.okres.cashup.Service.ClientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

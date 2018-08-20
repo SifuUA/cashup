@@ -1,4 +1,4 @@
-package com.okres.cashup.service;
+package com.okres.cashup.Service;
 
 import com.okres.cashup.Model.Order;
 import com.okres.cashup.Repository.ClientRepository;
